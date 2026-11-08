@@ -110,3 +110,72 @@ const posts = (await getCollection('blog')).sort(
 		<Footer />
 	</body>
 </html>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap');
+
+	:global(body) {
+		/* El linear-gradient actúa como un cristal oscuro sobre tu imagen para que el texto resalte */
+		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('../../assets/fondo-inicio.jpg');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
+		background-color: #0f172a; 
+		color: #e2e8f0; 
+		font-family: 'Inter', sans-serif; 
+		margin: 0;
+	}
+	main {
+		width: 960px;
+		max-width: calc(100% - 2em);
+		margin: 0 auto;
+		padding: 3em 1em;
+	}
+	.blog-grid {
+		list-style-type: none;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	.blog-grid li {
+		background: #1e293b;
+		border: 2px solid #334155;
+		border-radius: 12px;
+		overflow: hidden;
+		transition: transform 0.2s ease, border-color 0.2s ease;
+		box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+	}
+	.blog-grid li:hover {
+		transform: translateY(-5px);
+		border-color: #38bdf8;
+	}
+	.blog-grid li a {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+	}
+	.blog-grid li img {
+		width: 100%;
+		height: auto;
+		border-bottom: 2px solid #334155;
+		image-rendering: pixelated; /* Mantiene las imágenes pixel art nítidas */
+	}
+	.title {
+		font-family: 'Press Start 2P', cursive;
+		font-size: 0.85rem;
+		color: #f8fafc;
+		padding: 1.5em 1em 0 1em;
+		margin: 0;
+		line-height: 1.5;
+	}
+	.blog-grid li:hover .title {
+		color: #38bdf8;
+	}
+	.date {
+		color: #94a3b8;
+		font-size: 0.85rem;
+		padding: 0 1.2em 1.2em 1.2em;
+		margin-top: 0.8em;
+	}
+</style>

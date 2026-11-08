@@ -1,59 +1,169 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+// 1. Obtenemos todos los artículos de la carpeta blog
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// 2. Seleccionamos solo el más reciente (puedes cambiar el 1 por 3 si quieres mostrar más)
+const latestPosts = posts.slice(0, 1);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Bienvenido a mi Blog de Juegos y Tech</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to
-				build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like
-				Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>
-					Edit this page in <code>src/pages/index.astro</code>
-				</li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in <code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/content/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a> or{' '}
-				<a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a> by{' '}
-				<a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<h1>👋 ¡Hola! Bienvenido a mi bitácora</h1>
+				<p class="subtitle">
+					Un espacio personal donde combino la paternidad, los videojuegos y la tecnología. Creado para aprender, experimentar y pasar el rato.
+				</p>
+			</section>
+
+			<section class="about-card">
+				<h2>🌱 ¿De qué trata este proyecto?</h2>
+				<p>
+					Soy un papá aficionado a los videojuegos y a la tecnología. Decidí crear este blog sin una fórmula rígida: no estoy 100% seguro de cada tema del que hablaré a futuro, pero sí sé que quiero compartir mis vivencias diarias equilibrando la vida familiar, la crianza y mi pasión por el gaming.
+				</p>
+				<p>
+					Si te interesan los juegos aptos para tiempos reducidos, las anécdotas de un papá gamer o simplemente aprender sobre tecnología en el camino, ¡estás en el lugar correcto!
+				</p>
+			</section>
+
+			<section class="latest-posts">
+				<h2>📝 Último artículo</h2>
+				<ul class="post-list">
+					{
+						latestPosts.map((post) => (
+							<li>
+								<!-- Aquí está el cambio clave: usamos post.id -->
+								<a href={`/blog/${post.id}/`} class="post-title">
+									{post.data.title}
+								</a>
+								<p class="post-desc">{post.data.description}</p>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	/* 1. Importamos las fuentes: Press Start 2P (Pixel Art) e Inter (Moderna) */
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap');
+
+	/* 2. Configuramos el Fondo Oscuro Global */
+	/* Reemplaza solo esta parte en tu CSS */
+	:global(body) {
+		/* El linear-gradient actúa como un cristal oscuro sobre tu imagen para que el texto resalte */
+		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('../assets/fondo-inicio.jpg');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
+		background-color: #0f172a; 
+		color: #e2e8f0; 
+		font-family: 'Inter', sans-serif; 
+		margin: 0;
+	}
+
+	main {
+		width: 960px;
+		max-width: calc(100% - 2em);
+		margin: auto;
+		padding: 3em 1em;
+	}
+
+	/* 3. Títulos en Pixel Art con un azul neón retro */
+	h1, h2, h3 {
+		font-family: 'Press Start 2P', cursive;
+		line-height: 1.5;
+		color: #38bdf8; 
+	}
+
+	.hero {
+		text-align: center;
+		padding: 2.5em 0 1.5em 0;
+	}
+	.hero h1 {
+		font-size: 1.5rem; /* Tamaño reducido porque la fuente pixelada es ancha */
+		margin-bottom: 1em;
+	}
+	.subtitle {
+		font-size: 1.2rem;
+		color: #94a3b8;
+		max-width: 680px;
+		margin: 0 auto;
+		line-height: 1.6;
+	}
+	
+	/* 4. Tarjetas adaptadas al modo oscuro con sombra estilo "bloque" de videojuego */
+	.about-card {
+		background: #1e293b; 
+		border: 2px solid #334155;
+		border-radius: 12px;
+		padding: 2em;
+		margin: 2em 0;
+		line-height: 1.7;
+		box-shadow: 6px 6px 0px #0ea5e9; /* Detalle retro */
+	}
+	.about-card h2 {
+		margin-top: 0;
+		font-size: 1.1rem;
+	}
+	.latest-posts {
+		margin-top: 2.5em;
+	}
+	
+	/* 5. Lista de artículos (Menú de selección) */
+	.post-list {
+		list-style-type: none;
+		padding: 0;
+	}
+	.post-list li {
+		background: #1e293b;
+		border: 2px solid #334155;
+		border-left: 4px solid #38bdf8;
+		border-radius: 8px;
+		padding: 1.5em;
+		margin-bottom: 1em;
+		transition: transform 0.2s ease, border-color 0.2s ease;
+	}
+	.post-list li:hover {
+		transform: translateX(8px);
+		border-color: #38bdf8;
+	}
+	.post-title {
+		font-family: 'Press Start 2P', cursive; /* Título del post en pixel art */
+		font-size: 0.9rem;
+		color: #f8fafc;
+		text-decoration: none;
+		display: block;
+		margin-bottom: 1em;
+		line-height: 1.5;
+	}
+	.post-title:hover {
+		color: #38bdf8;
+	}
+	.post-desc {
+		color: #94a3b8;
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
+	/* 6. El truco de oro: Evita que cualquier imagen pixel art se vea borrosa al hacerle zoom o cambiar su tamaño */
+	:global(img) {
+		image-rendering: pixelated;
+		image-rendering: crisp-edges;
+	}
+</style>
