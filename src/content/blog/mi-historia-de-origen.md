@@ -22,7 +22,7 @@ La evolución continuó con la Wii y la 3DS, donde conocí la saga *Xenoblade*, 
 
 El tiempo pasó y llegó la Nintendo Switch, la primera consola que me compré con mi propio dinero. Con ella descubrí sagas que requerían más de mí como jugador, desde *Breath of the Wild* hasta el oscuro desafío de *Dark Souls* y *Blasphemous*.
 
-But el punto de quiebre en mi historia ocurrió cuando mi hermano se casó. En ese momento decidí comprarme una PS4. Ahí sufrí y amé *Bloodborne*, pero hubo un título que me marcó para siempre: **Death Stranding**. 
+Pero el punto de quiebre en mi historia ocurrió cuando mi hermano se casó. En ese momento decidí comprarme una PS4. Ahí sufrí y amé *Bloodborne*, pero hubo un título que me marcó para siempre: **Death Stranding**. 
 
 Siempre supe que quería ser padre, era un deseo latente en mí. Pero el mensaje profundo de *Death Stranding*, esa historia sobre conectar un mundo roto, sobre proteger y llevar contigo a ese pequeño ser (BB) a través de las peores adversidades, me impactó de una manera que no esperaba. Jugándolo, mi deseo de ser papá se reforzó inmensamente. Me inspiró a dar el paso decisivo.
 
