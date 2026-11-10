@@ -51,6 +51,6 @@ Nos enviaron a la sala de postparto, donde me quedé cuidando a la bebé para qu
 
 Al día siguiente llegué a las 8:00 de la mañana. Pasé todo el día cuidando a la bebé para que mi esposa durmiera. Pasó la señora del registro para formalizar su nombre y, unas horas más tarde, nos dieron la salida. Salimos por esas puertas del hospital convertidos oficialmente en una familia.
 
-De camino pasamos a la casa de la abuela de Kendy para que la conociera, ya que no se aguantaba la emoción, y finalmente llegamos a casa para vivir nuestra primera noche juntos. 
+De camino pasamos a la casa de la abuela de mi esposa para que la conociera, ya que no se aguantaba la emoción, y finalmente llegamos a casa para vivir nuestra primera noche juntos. 
 
 La mejor partida de mi vida apenas acababa de comenzar.
