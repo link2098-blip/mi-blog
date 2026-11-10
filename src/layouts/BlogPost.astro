@@ -15,44 +15,111 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap');
+
+	:global(body) {
+		/* El linear-gradient actúa como un cristal oscuro sobre tu imagen para que el texto resalte */
+		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('../assets/fondo-inicio.jpg');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
+		background-color: #0f172a; 
+		color: #e2e8f0; 
+		font-family: 'Inter', sans-serif; 
+		margin: 0;
+	}
+	main {
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 3em 1em;
+	}
+	.hero-image {
+		width: 100%;
+	}
+	.hero-image img {
+		display: block;
+		margin: 0 auto;
+		border-radius: 12px;
+		box-shadow: 6px 6px 0px rgba(0,0,0,0.4); /* Sombra bloque retro */
+		border: 4px solid #334155;
+		image-rendering: pixelated; 
+	}
+	.prose {
+		width: 100%;
+		padding: 2em 0;
+		color: #cbd5e1; /* Gris claro para lectura cómoda */
+		line-height: 1.8;
+		font-size: 1.1rem;
+	}
+	.title {
+		margin-bottom: 2em;
+		text-align: center;
+	}
+	.title h1 {
+		font-family: 'Press Start 2P', cursive;
+		font-size: 1.6rem;
+		color: #38bdf8; /* Azul neón */
+		line-height: 1.5;
+		margin: 1em 0 0.5em 0;
+	}
+	.date {
+		color: #94a3b8;
+		font-size: 0.9rem;
+	}
+	hr {
+		border: none;
+		border-top: 2px dashed #334155;
+		margin: 2em 0;
+	}
+
+	.prose {
+		width: 100%;
+		/* --- NUEVO: Estilo de caja de texto RPG --- */
+		background-color: #1e293b; /* Fondo oscuro sólido */
+		padding: 2.5em; /* Espacio interno para que el texto respire */
+		border: 2px solid #334155; /* Borde gris oscuro */
+		border-radius: 12px;
+		box-shadow: 8px 8px 0px rgba(0,0,0,0.4); /* Sombra dura estilo 8-bits */
+		box-sizing: border-box; /* Evita que la caja se salga de la pantalla */
+		/* ----------------------------------------- */
+		
+		color: #cbd5e1; 
+		line-height: 1.8;
+		font-size: 1.1rem;
+	}
+	
+	/* --- Estilos internos del Markdown (Tus textos) --- */
+	.prose :global(h2), .prose :global(h3) {
+		font-family: 'Press Start 2P', cursive;
+		color: #f8fafc;
+		margin-top: 2em;
+		margin-bottom: 1em;
+		line-height: 1.5;
+	}
+	.prose :global(h2) { font-size: 1.1rem; }
+	.prose :global(h3) { font-size: 0.9rem; color: #0ea5e9; }
+	.prose :global(p) { margin-bottom: 1.5em; }
+	.prose :global(strong) { color: #f8fafc; }
+	
+	.prose :global(a) {
+		color: #38bdf8;
+		text-decoration: underline;
+		text-decoration-style: dashed;
+		text-underline-offset: 4px;
+	}
+	.prose :global(a:hover) {
+		color: #bae6fd;
+	}
+	.prose :global(blockquote) {
+		border-left: 4px solid #38bdf8;
+		background: #1e293b;
+		padding: 1em;
+		margin: 1.5em 0;
+		border-radius: 0 8px 8px 0;
+		font-style: italic;
+	}
+</style>
 	</head>
 
 	<body>
@@ -60,7 +127,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <Image loading="eager" width={1020} height={510} src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">

@@ -1,35 +1,14 @@
-// @ts-check
-
+import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import { defineConfig, fontProviders } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
+	// Cambia "tu-usuario" por tu nombre de usuario real en GitHub
+	site: 'https:/github.com/link2098-blip',
+	
+	// Escribe exactamente el nombre que le darás a tu repositorio en GitHub
+	// Por los errores anteriores vi que tu carpeta se llama "mi-blog", así que asumo que será ese.
+	base: '/mi-blog', 
+	
 	integrations: [mdx(), sitemap()],
-	fonts: [
-		{
-			provider: fontProviders.local(),
-			name: 'Atkinson',
-			cssVariable: '--font-atkinson',
-			fallbacks: ['sans-serif'],
-			options: {
-				variants: [
-					{
-						src: ['./src/assets/fonts/atkinson-regular.woff'],
-						weight: 400,
-						style: 'normal',
-						display: 'swap',
-					},
-					{
-						src: ['./src/assets/fonts/atkinson-bold.woff'],
-						weight: 700,
-						style: 'normal',
-						display: 'swap',
-					},
-				],
-			},
-		},
-	],
 });
