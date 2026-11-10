@@ -47,7 +47,7 @@ const latestPosts = posts.slice(0, 1);
 						latestPosts.map((post) => (
 							<li>
 								<!-- Aquí está el cambio clave: usamos post.id -->
-								<a href={`/blog/${post.id}/`} class="post-title">
+								<a href={`/mi-blog/blog/${post.id}/`} class="post-title">
 									{post.data.title}
 								</a>
 								<p class="post-desc">{post.data.description}</p>
