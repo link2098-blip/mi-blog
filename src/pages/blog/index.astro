@@ -93,7 +93,7 @@ const posts = (await getCollection('blog')).sort(
 				<ul>
 					{posts.map((post) => (
 						<li>
-							<a href={`/blog/${post.id}/`}>
+							<a href={`/mi-blog/blog/${post.id}/`}>
 								{post.data.heroImage && (
 									<Image loading="eager" width={720} height={360} src={post.data.heroImage} alt="" />
 								)}
@@ -116,7 +116,7 @@ const posts = (await getCollection('blog')).sort(
 
 	:global(body) {
 		/* El linear-gradient actúa como un cristal oscuro sobre tu imagen para que el texto resalte */
-		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('../../assets/fondo-inicio.jpg');
+		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('src/assets/fondo-inicio.jpg');
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
