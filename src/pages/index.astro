@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
+import fondo from "/src/assets/player-2.jpg";
 
 // 1. Obtenemos todos los artículos de la carpeta blog
 const posts = (await getCollection('blog')).sort(
@@ -67,7 +68,7 @@ const latestPosts = posts.slice(0, 1);
 	/* Reemplaza solo esta parte en tu CSS */
 	:global(body) {
 		/* El linear-gradient actúa como un cristal oscuro sobre tu imagen para que el texto resalte */
-		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('../assets/fondo-inicio.jpg');
+		background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('src/assets/fondo-inicio.jpg');
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed; /* Hace que el fondo se quede quieto al hacer scroll */
